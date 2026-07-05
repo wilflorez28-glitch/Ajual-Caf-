@@ -1,0 +1,424 @@
+/* =====================================================================
+   AJUALÁ CAFÉ BAR · styles.css
+   Editorial cálido vintage — espresso oscuro + interludios crema.
+   Paleta y tipografías según el manual de marca.
+===================================================================== */
+
+:root{
+  /* ----- Paleta de marca (hex exactos del manual) ----- */
+  --espresso:  #211A17;   /* base oscura */
+  --tostado:   #5C3A24;   /* café tostado */
+  --caramelo:  #A9724B;   /* acento cálido */
+  --latte:     #D8A878;   /* acento claro */
+  --crema:     #EFE3D2;   /* fondo claro / luz */
+  --maracuya:  #E0A11C;   /* acento — SOLO botones, enlaces y micro-detalles */
+
+  /* ----- Derivados ----- */
+  --espresso-deep: #181210;
+  --crema-soft:    #F6EFE3;
+  --line-cream:    rgba(33,26,23,.14);
+  --line-dark:     rgba(239,227,210,.16);
+
+  /* ----- Tipografías de marca ----- */
+  --display: "Playfair Display", Georgia, serif;
+  --body:    "Nunito Sans", system-ui, -apple-system, sans-serif;
+
+  /* ----- Medidas ----- */
+  --maxw: 1240px;
+  --gutter: clamp(20px, 5vw, 64px);
+  --radius: 4px;
+  --ease: cubic-bezier(.22,.61,.36,1);
+}
+
+/* ----- Reset ----- */
+*,*::before,*::after{ box-sizing:border-box; margin:0; padding:0; }
+html{ scroll-behavior:smooth; -webkit-text-size-adjust:100%; }
+body{
+  font-family:var(--body);
+  background:var(--espresso);
+  color:var(--crema);
+  font-size:clamp(16px,1.05vw,17.5px);
+  line-height:1.7;
+  font-weight:400;
+  overflow-x:hidden;
+  -webkit-font-smoothing:antialiased;
+}
+img{ display:block; max-width:100%; height:auto; }
+a{ color:inherit; text-decoration:none; }
+em{ font-style:italic; }
+
+/* ----- Tipografía editorial ----- */
+h1,h2,h3{ font-family:var(--display); font-weight:600; line-height:1.06; letter-spacing:-.01em; }
+
+.section-title{
+  font-size:clamp(2rem,4.6vw,3.4rem);
+  color:var(--tostado);
+  margin-bottom:1.4rem;
+}
+.section-title--light{ color:var(--crema); }
+.section-title em{ color:var(--caramelo); }
+.section-title--light em{ color:var(--latte); }
+
+.eyebrow{
+  font-family:var(--body);
+  font-size:.74rem;
+  font-weight:700;
+  letter-spacing:.32em;
+  text-transform:uppercase;
+  color:var(--caramelo);
+  margin-bottom:1.1rem;
+  display:flex; align-items:center; gap:.7em;
+}
+.eyebrow::before{ content:""; width:34px; height:1px; background:currentColor; opacity:.7; }
+.eyebrow--light{ color:var(--latte); }
+
+/* ----- Enlaces / botones ----- */
+.btn{
+  --b: var(--maracuya);
+  display:inline-flex; align-items:center; justify-content:center;
+  gap:.5em;
+  font-family:var(--body); font-weight:700;
+  font-size:.95rem; letter-spacing:.02em;
+  padding:.9em 1.7em;
+  border-radius:var(--radius);
+  cursor:pointer; border:1.5px solid transparent;
+  transition:transform .35s var(--ease), background .35s var(--ease), color .35s var(--ease), box-shadow .35s var(--ease);
+  will-change:transform;
+}
+.btn--accent{ background:var(--maracuya); color:var(--espresso-deep); box-shadow:0 8px 24px -10px rgba(224,161,28,.7); }
+.btn--accent:hover{ transform:translateY(-3px); box-shadow:0 14px 30px -10px rgba(224,161,28,.85); }
+.btn--ghost{ border-color:var(--line-dark); color:var(--crema); }
+.btn--ghost:hover{ background:rgba(239,227,210,.08); transform:translateY(-3px); }
+
+.link-underline{
+  display:inline-block; font-weight:700; color:var(--maracuya);
+  padding-bottom:2px; background:linear-gradient(currentColor,currentColor) 0 100%/0 1.5px no-repeat;
+  transition:background-size .4s var(--ease);
+}
+.link-underline:hover{ background-size:100% 1.5px; }
+
+/* =====================================================================
+   SCROLL REVEAL — robusto: si JS no corre, todo queda visible.
+===================================================================== */
+html.js .reveal{ opacity:0; transform:translateY(26px); transition:opacity .8s var(--ease), transform .8s var(--ease); }
+html.js .reveal.is-visible{ opacity:1; transform:none; }
+@media (prefers-reduced-motion: reduce){
+  html.js .reveal{ opacity:1; transform:none; transition:none; }
+}
+
+/* =====================================================================
+   SELLO GIRATORIO — elemento firma (emblema de marca)
+===================================================================== */
+.seal{ position:relative; width:148px; height:148px; }
+.seal svg{ width:100%; height:100%; animation:sealspin 26s linear infinite; }
+.seal__text{ font-family:var(--body); font-size:13.2px; font-weight:800; letter-spacing:.22em; fill:var(--latte); text-transform:uppercase; }
+.seal__mark{
+  position:absolute; inset:0; display:grid; place-items:center;
+  font-family:var(--display); font-size:2.5rem; font-weight:700; color:var(--latte);
+  letter-spacing:-.05em;
+}
+@keyframes sealspin{ to{ transform:rotate(360deg); } }
+@media (prefers-reduced-motion: reduce){ .seal svg{ animation:none; } }
+
+/* =====================================================================
+   1 · NAVEGACIÓN
+===================================================================== */
+.nav{
+  position:fixed; top:0; left:0; width:100%; z-index:1000;
+  transition:background .4s var(--ease), box-shadow .4s var(--ease), padding .4s var(--ease);
+  padding:18px 0;
+}
+.nav__inner{
+  max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter);
+  display:flex; align-items:center; justify-content:space-between; gap:1.5rem;
+}
+.nav__brand{ display:flex; align-items:center; gap:.6rem; z-index:1002; }
+.nav__logo{ width:46px; height:46px; border-radius:50%; background:var(--crema); object-fit:contain; padding:2px; transition:transform .4s var(--ease); }
+.nav__brand:hover .nav__logo{ transform:rotate(-8deg); }
+.nav__brand-name{ font-family:var(--display); font-size:1.5rem; font-weight:700; color:var(--crema); letter-spacing:.01em; }
+
+.nav__links{ display:flex; align-items:center; gap:2rem; }
+.nav__links a:not(.nav__cta){
+  font-weight:600; font-size:.95rem; color:var(--crema); position:relative; opacity:.92;
+}
+.nav__links a:not(.nav__cta)::after{
+  content:""; position:absolute; left:0; bottom:-6px; width:0; height:1.5px; background:var(--maracuya);
+  transition:width .35s var(--ease);
+}
+.nav__links a:not(.nav__cta):hover::after{ width:100%; }
+.nav__cta{ padding:.6em 1.3em; font-size:.9rem; }
+
+/* Estado al hacer scroll */
+.nav.is-scrolled{ background:rgba(24,18,16,.92); backdrop-filter:blur(10px); box-shadow:0 1px 0 var(--line-dark); padding:12px 0; }
+
+/* Hamburguesa */
+.nav__toggle{ display:none; flex-direction:column; gap:5px; background:none; border:0; cursor:pointer; padding:8px; z-index:1002; }
+.nav__toggle span{ width:26px; height:2px; background:var(--crema); border-radius:2px; transition:transform .35s var(--ease), opacity .35s var(--ease); }
+.nav.is-open .nav__toggle span:nth-child(1){ transform:translateY(7px) rotate(45deg); }
+.nav.is-open .nav__toggle span:nth-child(2){ opacity:0; }
+.nav.is-open .nav__toggle span:nth-child(3){ transform:translateY(-7px) rotate(-45deg); }
+
+/* =====================================================================
+   2 · HERO
+===================================================================== */
+.hero{ position:relative; min-height:100svh; display:flex; align-items:center; overflow:hidden; }
+.hero__video{
+  position:absolute; inset:0; width:100%; height:100%; object-fit:cover;
+  background:var(--espresso-deep); z-index:0;
+}
+.hero__veil{
+  position:absolute; inset:0;
+  background:
+    linear-gradient(180deg, rgba(24,18,16,.55) 0%, rgba(24,18,16,.35) 35%, rgba(24,18,16,.85) 100%),
+    radial-gradient(120% 80% at 70% 30%, rgba(92,58,36,.25), transparent 60%);
+}
+.hero__content{ position:relative; z-index:3; max-width:var(--maxw); width:100%; margin:0 auto; padding:0 var(--gutter); }
+.hero__title{
+  font-size:clamp(4.2rem,17vw,12rem); color:var(--crema); line-height:.9;
+  margin:.1em 0 .15em; text-shadow:0 12px 60px rgba(0,0,0,.4);
+}
+.hero__phrase{
+  font-family:var(--display); font-size:clamp(1.35rem,3.4vw,2.4rem); color:var(--crema);
+  line-height:1.25; margin-bottom:2.2rem; max-width:18ch;
+}
+.hero__phrase em{ color:var(--latte); }
+.hero__actions{ display:flex; flex-wrap:wrap; gap:1rem; }
+
+.hero__seal{ position:absolute; top:50%; right:var(--gutter); transform:translateY(-50%); z-index:3; opacity:.9; }
+
+.hero__scroll{ position:absolute; bottom:28px; left:50%; transform:translateX(-50%); z-index:3; width:26px; height:42px; border:2px solid var(--line-dark); border-radius:14px; display:grid; place-items:start center; padding-top:7px; }
+.hero__scroll span{ width:3px; height:8px; background:var(--latte); border-radius:2px; animation:scrolldot 1.8s var(--ease) infinite; }
+@keyframes scrolldot{ 0%{opacity:0;transform:translateY(0)} 30%{opacity:1} 100%{opacity:0;transform:translateY(12px)} }
+
+/* =====================================================================
+   LA EXPERIENCIA — imagen inmersiva full-bleed
+===================================================================== */
+.showcase{ position:relative; min-height:min(86vh,760px); display:flex; align-items:flex-end; overflow:hidden; background:var(--espresso-deep); }
+.showcase__bg{
+  position:absolute; inset:0; background-size:cover; background-position:center;
+  transform:scale(1.06); will-change:transform; z-index:0;
+}
+.showcase__veil{
+  position:absolute; inset:0; z-index:1;
+  background:linear-gradient(180deg, rgba(24,18,16,.55) 0%, rgba(24,18,16,.2) 38%, rgba(24,18,16,.92) 100%);
+}
+.showcase__copy{ position:relative; z-index:3; max-width:var(--maxw); width:100%; margin:0 auto; padding:0 var(--gutter) clamp(48px,9vh,110px); }
+.showcase__title{ font-size:clamp(2rem,5.5vw,4rem); color:var(--crema); margin:.4rem 0 1rem; }
+.showcase__title em{ color:var(--latte); }
+.showcase__lead{ max-width:38ch; color:rgba(239,227,210,.86); font-size:1.05rem; }
+
+/* =====================================================================
+   3 · SOBRE NOSOTROS  (interludio crema)
+===================================================================== */
+.about{ background:var(--crema); color:var(--espresso); padding:clamp(72px,11vw,150px) 0; }
+.about__grid{
+  max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter);
+  display:grid; grid-template-columns:1fr 1.05fr; gap:clamp(32px,6vw,90px); align-items:center;
+}
+.about__media{ position:relative; }
+.about__media img{ width:100%; aspect-ratio:4/5; object-fit:cover; border-radius:var(--radius); }
+.about__stamp{
+  position:absolute; bottom:-18px; left:-18px; background:var(--espresso); color:var(--latte);
+  font-family:var(--body); font-weight:700; font-size:.72rem; letter-spacing:.22em; text-transform:uppercase;
+  padding:.9em 1.3em; border-radius:var(--radius); max-width:11em; line-height:1.4;
+}
+.about__text p{ color:#3a2c23; margin-bottom:1.2rem; }
+.about__text .section-title{ color:var(--tostado); }
+.about__text strong{ color:var(--tostado); }
+
+/* =====================================================================
+   4 · MENÚ  (sección espresso)
+===================================================================== */
+.menu{ background:var(--espresso); padding:clamp(72px,11vw,150px) 0; position:relative; }
+.menu__head{ max-width:var(--maxw); margin:0 auto clamp(40px,6vw,72px); padding:0 var(--gutter); max-width:760px; }
+.menu__intro{ color:rgba(239,227,210,.7); }
+.menu__grid{
+  max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter);
+  display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,2.4vw,34px);
+}
+.card{
+  background:linear-gradient(180deg, rgba(92,58,36,.22), rgba(92,58,36,.06));
+  border:1px solid var(--line-dark); border-radius:var(--radius); overflow:hidden;
+  transition:transform .5s var(--ease), border-color .5s var(--ease), box-shadow .5s var(--ease);
+}
+.card:hover{ transform:translateY(-6px); border-color:rgba(216,168,120,.45); box-shadow:0 24px 50px -28px rgba(0,0,0,.8); }
+.card__media{ aspect-ratio:3/2; overflow:hidden; }
+.card__media img{ width:100%; height:100%; object-fit:cover; transition:transform .8s var(--ease); }
+.card:hover .card__media img{ transform:scale(1.06); }
+.card__body{ padding:1.5rem 1.5rem 1.7rem; }
+.card__top{ display:flex; justify-content:space-between; align-items:baseline; gap:.8rem; margin-bottom:.55rem; }
+.card__top h3{ font-size:1.3rem; color:var(--crema); }
+.card__price{ font-family:var(--body); font-weight:800; color:var(--maracuya); font-size:1rem; white-space:nowrap; }
+.card__body p{ color:rgba(239,227,210,.72); font-size:.95rem; line-height:1.6; }
+
+/* =====================================================================
+   5 · GALERÍA  (interludio crema)
+===================================================================== */
+.gallery{ background:var(--crema-soft); color:var(--espresso); padding:clamp(72px,11vw,150px) 0; }
+.gallery__head{ max-width:var(--maxw); margin:0 auto clamp(36px,5vw,60px); padding:0 var(--gutter); }
+.gallery__head .section-title{ color:var(--tostado); }
+.gallery__grid{
+  max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter);
+  display:grid; grid-template-columns:repeat(3,1fr); grid-auto-rows:220px; gap:14px;
+}
+.gallery__item{ overflow:hidden; border-radius:var(--radius); }
+.gallery__item img{ width:100%; height:100%; object-fit:cover; transition:transform .9s var(--ease); }
+.gallery__item:hover img{ transform:scale(1.07); }
+.gallery__item--tall{ grid-row:span 2; }
+.gallery__item--wide{ grid-column:span 2; }
+
+/* =====================================================================
+   6 · RESEÑAS  (sección espresso)
+===================================================================== */
+.reviews{ background:linear-gradient(180deg,var(--espresso),var(--espresso-deep)); padding:clamp(72px,11vw,150px) 0; }
+.reviews__head{ max-width:var(--maxw); margin:0 auto clamp(40px,6vw,68px); padding:0 var(--gutter); max-width:680px; }
+.reviews__grid{
+  max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter);
+  display:grid; grid-template-columns:repeat(3,1fr); gap:clamp(20px,2.4vw,30px);
+}
+.quote{ position:relative; border:1px solid var(--line-dark); border-radius:var(--radius); padding:2.6rem 1.8rem 1.9rem; background:rgba(92,58,36,.12); }
+.quote__seal{ position:absolute; top:-.2em; left:1rem; font-family:var(--display); font-size:5rem; color:var(--caramelo); opacity:.45; line-height:1; }
+.quote blockquote{ font-family:var(--display); font-style:italic; font-size:1.15rem; line-height:1.55; color:var(--crema); margin-bottom:1.2rem; position:relative; z-index:1; }
+.quote figcaption{ font-weight:700; font-size:.85rem; letter-spacing:.05em; color:var(--latte); }
+
+/* =====================================================================
+   7 · UBICACIÓN  (interludio crema)
+===================================================================== */
+.location{ background:var(--crema); color:var(--espresso); padding:clamp(72px,11vw,150px) 0; }
+.location__info, .location__map{ }
+.location{
+  display:grid; grid-template-columns:1fr 1.1fr; gap:clamp(32px,5vw,80px);
+  max-width:var(--maxw); margin:0 auto; padding-left:var(--gutter); padding-right:var(--gutter);
+  align-items:center;
+}
+.location .section-title{ color:var(--tostado); }
+.location__list{ list-style:none; margin:1.8rem 0 2.2rem; }
+.location__list li{ display:grid; grid-template-columns:130px 1fr; gap:1rem; padding:1.1rem 0; border-top:1px solid var(--line-cream); }
+.location__list li:last-child{ border-bottom:1px solid var(--line-cream); }
+.location__label{ font-family:var(--body); font-weight:800; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--caramelo); padding-top:3px; }
+.location__value{ color:#3a2c23; }
+.location__map{ height:min(480px,70vh); border-radius:var(--radius); overflow:hidden; box-shadow:0 30px 60px -34px rgba(33,26,23,.6); }
+.location__map iframe{ display:block; width:100%; height:100%; filter:sepia(.18) contrast(1.02); }
+
+/* =====================================================================
+   9 · FOOTER
+===================================================================== */
+.footer{ background:var(--espresso-deep); padding:clamp(56px,8vw,90px) 0 30px; }
+.footer__top{ max-width:var(--maxw); margin:0 auto; padding:0 var(--gutter); display:grid; grid-template-columns:1.4fr 1fr 1fr; gap:clamp(28px,5vw,60px); align-items:start; }
+.footer__brand img{ width:64px; height:64px; border-radius:50%; background:var(--crema); object-fit:contain; padding:3px; margin-bottom:1rem; }
+.footer__tagline{ font-family:var(--display); font-size:1.2rem; line-height:1.3; color:var(--crema); }
+.footer__tagline em{ color:var(--latte); }
+.footer__nav{ display:flex; flex-direction:column; gap:.7rem; }
+.footer__nav a{ color:rgba(239,227,210,.78); font-weight:600; transition:color .3s var(--ease); }
+.footer__nav a:hover{ color:var(--maracuya); }
+.footer__social{ display:flex; flex-direction:column; gap:.7rem; }
+.footer__social-label{ font-weight:800; font-size:.72rem; letter-spacing:.2em; text-transform:uppercase; color:var(--caramelo); margin-bottom:.2rem; }
+.footer__social a{ color:rgba(239,227,210,.78); font-weight:600; transition:color .3s var(--ease); }
+.footer__social a:hover{ color:var(--maracuya); }
+.footer__bottom{ max-width:var(--maxw); margin:clamp(40px,6vw,64px) auto 0; padding:22px var(--gutter) 0; border-top:1px solid var(--line-dark); color:rgba(239,227,210,.5); font-size:.82rem; }
+
+/* =====================================================================
+   8 · BOTÓN FLOTANTE WHATSAPP
+===================================================================== */
+.wa-float{
+  position:fixed; right:clamp(16px,3vw,28px); bottom:clamp(16px,3vw,28px); z-index:1100;
+  width:60px; height:60px; border-radius:50%;
+  display:grid; place-items:center; color:#fff;
+  background:#25D366; box-shadow:0 10px 30px -8px rgba(37,211,102,.7);
+  transition:transform .35s var(--ease), box-shadow .35s var(--ease);
+  animation:wapulse 2.6s ease-out infinite;
+}
+.wa-float:hover{ transform:scale(1.08); box-shadow:0 14px 36px -8px rgba(37,211,102,.85); }
+@keyframes wapulse{ 0%{box-shadow:0 10px 30px -8px rgba(37,211,102,.7),0 0 0 0 rgba(37,211,102,.5)} 70%{box-shadow:0 10px 30px -8px rgba(37,211,102,.7),0 0 0 16px rgba(37,211,102,0)} 100%{box-shadow:0 10px 30px -8px rgba(37,211,102,.7),0 0 0 0 rgba(37,211,102,0)} }
+@media (prefers-reduced-motion: reduce){ .wa-float{ animation:none; } }
+
+/* =====================================================================
+   RESPONSIVE
+===================================================================== */
+@media (max-width: 980px){
+  .about__grid{ grid-template-columns:1fr; }
+  .about__media{ order:-1; max-width:460px; }
+  .menu__grid{ grid-template-columns:repeat(2,1fr); }
+  .reviews__grid{ grid-template-columns:1fr; max-width:620px; }
+  .location{ grid-template-columns:1fr; }
+  .location__map{ height:340px; order:-1; }
+  .footer__top{ grid-template-columns:1fr 1fr; }
+}
+
+@media (max-width: 820px){
+  /* Menú móvil */
+  .nav__toggle{ display:flex; }
+  .nav__links{
+    position:fixed; inset:0; flex-direction:column; justify-content:center; gap:2rem;
+    background:rgba(24,18,16,.97); backdrop-filter:blur(8px);
+    transform:translateX(100%); transition:transform .45s var(--ease);
+  }
+  .nav.is-open .nav__links{ transform:translateX(0); }
+  .nav__links a:not(.nav__cta){ font-size:1.5rem; font-family:var(--display); opacity:1; }
+  .nav__cta{ font-size:1rem; padding:.8em 1.8em; }
+  .hero__seal{ width:104px; height:104px; top:auto; bottom:96px; right:var(--gutter); transform:none; }
+  .seal{ width:104px; height:104px; }
+}
+
+/* =====================================================================
+   TELÉFONOS — experiencia prioritaria en celular
+===================================================================== */
+@media (max-width: 620px){
+  :root{ --gutter: 22px; }
+
+  /* Secciones más compactas y "app-like" (menos aire vertical en móvil) */
+  .about, .menu, .gallery, .reviews{ padding-top:58px; padding-bottom:58px; }
+  .location{ padding-top:58px; padding-bottom:58px; }
+
+  /* Hero: título contenido, frase legible y botones apilados a lo ancho */
+  .hero{ min-height:100svh; }
+  .hero__title{ font-size:clamp(3.6rem,21vw,5.6rem); }
+  .hero__phrase{ font-size:clamp(1.3rem,5.6vw,1.7rem); margin-bottom:1.8rem; }
+  .hero__actions{ width:100%; gap:.7rem; }
+  .hero__actions .btn{ flex:1 1 100%; padding:1em 1.4em; font-size:1rem; }
+  .hero__seal{ display:none; }
+
+  /* Sección imagen: alto cómodo para que el texto respire */
+  .showcase{ min-height:78svh; }
+  .showcase__title{ font-size:clamp(1.9rem,8vw,2.6rem); }
+  .showcase__lead{ font-size:1rem; }
+
+  /* Títulos de sección ajustados a pantalla pequeña */
+  .section-title{ font-size:clamp(1.85rem,8vw,2.5rem); }
+
+  /* Menú: una columna, foto más ancha para ver mejor el producto */
+  .menu__grid{ grid-template-columns:1fr; gap:18px; }
+  .card__media{ aspect-ratio:16/10; }
+  .card__body{ padding:1.3rem 1.3rem 1.5rem; }
+
+  /* Galería: cuadrícula limpia y proporcionada (cuadrados) */
+  .gallery__grid{ grid-template-columns:repeat(2,1fr); grid-auto-rows:44vw; gap:10px; }
+  .gallery__item--tall{ grid-row:span 2; }
+  .gallery__item--wide{ grid-column:span 2; }
+
+  /* Listas y footer en una columna */
+  .footer__top{ grid-template-columns:1fr; gap:30px; }
+  .location__list li{ grid-template-columns:1fr; gap:.25rem; }
+  .location__map{ height:300px; }
+
+  /* Reseñas: cita un poco más compacta */
+  .quote{ padding:2.3rem 1.4rem 1.6rem; }
+  .quote blockquote{ font-size:1.08rem; }
+}
+
+/* Teléfonos pequeños (≤ 380px) */
+@media (max-width: 380px){
+  .nav__brand-name{ font-size:1.3rem; }
+  .hero__title{ font-size:clamp(3.2rem,20vw,4.6rem); }
+  .gallery__grid{ grid-auto-rows:42vw; }
+}
+
+/* Respeta el área segura en móviles con notch / barra inferior */
+.wa-float{
+  right:max(16px, env(safe-area-inset-right, 0px));
+  bottom:max(16px, env(safe-area-inset-bottom, 0px));
+}
+.nav__inner{ padding-left:max(var(--gutter), env(safe-area-inset-left, 0px)); padding-right:max(var(--gutter), env(safe-area-inset-right, 0px)); }
+
+/* Foco accesible */
+:focus-visible{ outline:2.5px solid var(--maracuya); outline-offset:3px; border-radius:2px; }

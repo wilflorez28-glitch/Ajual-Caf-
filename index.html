@@ -1,0 +1,359 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- ====== SEO básico ====== -->
+  <title>Ajualá Café Bar | Cafetería en Guarne, Antioquia</title>
+  <meta name="description" content="Ajualá Café Bar, una cafetería en Guarne, Antioquia. No solo café: una experiencia única e inolvidable. Café de especialidad, bebidas frías, repostería y coctelería de autor." />
+  <meta name="theme-color" content="#211A17" />
+  <link rel="canonical" href="https://ajualacafebar.com/" />
+
+  <!-- Open Graph -->
+  <meta property="og:type" content="business.business" />
+  <meta property="og:title" content="Ajualá Café Bar | Cafetería en Guarne, Antioquia" />
+  <meta property="og:description" content="No solo café. Una experiencia única e inolvidable. Te esperamos en Guarne, Antioquia." />
+  <meta property="og:locale" content="es_CO" />
+  <meta property="og:image" content="assets/img/hero-ambiente.jpg" />
+
+  <!-- Favicon (usa el logo de la marca) -->
+  <link rel="icon" type="image/png" href="assets/img/logo-badge.png" />
+
+  <!-- ====== Tipografías de marca (Google Fonts) ====== -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;0,700;0,800;1,500;1,600&family=Nunito+Sans:wght@300;400;600;700;800&display=swap" rel="stylesheet" />
+
+  <link rel="stylesheet" href="styles.css?v=20260619" />
+</head>
+<body>
+
+  <!-- ====================================================================
+       1 · NAVEGACIÓN FIJA
+  ===================================================================== -->
+  <header class="nav" id="inicio">
+    <div class="nav__inner">
+      <a href="#inicio" class="nav__brand" aria-label="Ajualá Café Bar — inicio">
+        <img src="assets/img/logo-badge.png" alt="Logo de Ajualá Café Bar" class="nav__logo" width="44" height="44" />
+        <span class="nav__brand-name">Ajualá</span>
+      </a>
+
+      <nav class="nav__links" id="navLinks" aria-label="Navegación principal">
+        <a href="#inicio">Inicio</a>
+        <a href="#menu">Menú</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#ubicacion">Ubicación</a>
+        <!-- REEMPLAZAR: número real de WhatsApp con código de país, ej. 573001234567 -->
+        <a href="https://wa.me/573000000000?text=Hola%20Ajualá,%20quiero%20más%20información"
+           class="btn btn--accent nav__cta" target="_blank" rel="noopener">Escríbenos</a>
+      </nav>
+
+      <button class="nav__toggle" id="navToggle" aria-label="Abrir menú" aria-expanded="false" aria-controls="navLinks">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- ====================================================================
+         2 · PORTADA / HERO
+    ===================================================================== -->
+    <section class="hero">
+      <!-- VIDEO de portada: se reproduce solo, en bucle y silenciado.
+           poster = primer fotograma estático (también es el fallback con prefers-reduced-motion). -->
+      <video class="hero__video" id="heroVideo"
+             autoplay muted loop playsinline preload="auto" disablepictureinpicture
+             poster="assets/img/hero-ambiente.jpg" aria-label="Video del ambiente de Ajualá Café Bar">
+        <source src="assets/video/experiencia.mp4" type="video/mp4" />
+      </video>
+      <div class="hero__veil"></div>
+
+      <!-- Sello giratorio: elemento firma derivado del emblema de la marca -->
+      <div class="seal hero__seal" aria-hidden="true">
+        <svg viewBox="0 0 200 200">
+          <defs>
+            <path id="sealCircle" d="M100,100 m-74,0 a74,74 0 1,1 148,0 a74,74 0 1,1 -148,0" />
+          </defs>
+          <text class="seal__text"><textPath href="#sealCircle" startOffset="0">AJUALÁ · CAFÉ BAR · GUARNE · ANTIOQUIA · </textPath></text>
+        </svg>
+        <span class="seal__mark">Aᴜ</span>
+      </div>
+
+      <div class="hero__content">
+        <p class="eyebrow eyebrow--light reveal">Cafetería &amp; bar · Guarne, Antioquia</p>
+        <h1 class="hero__title reveal">Ajualá</h1>
+        <p class="hero__phrase reveal">No solo café.<br /><em>Una experiencia única e inolvidable.</em></p>
+        <div class="hero__actions reveal">
+          <a href="#menu" class="btn btn--accent">Ver el menú</a>
+          <a href="#experiencia" class="btn btn--ghost">La experiencia ↓</a>
+        </div>
+      </div>
+
+      <a href="#experiencia" class="hero__scroll" aria-label="Desplázate para descubrir">
+        <span></span>
+      </a>
+    </section>
+
+    <!-- ====================================================================
+         · LA EXPERIENCIA AJUALÁ (imagen inmersiva full-bleed)
+    ===================================================================== -->
+    <section class="showcase" id="experiencia" aria-label="La experiencia Ajualá">
+      <!-- FOTO: portada del local (vitrina de repostería + café de la casa). -->
+      <div class="showcase__bg" style="background-image:url('assets/img/portada.jpg')" role="img" aria-label="Vitrina de repostería y café de la casa de Ajualá"></div>
+      <div class="showcase__veil"></div>
+      <div class="showcase__copy reveal">
+        <p class="eyebrow eyebrow--light">El ritual</p>
+        <h2 class="showcase__title">Cada taza,<br /><em>un momento que se queda.</em></h2>
+        <p class="showcase__lead">Del grano al aroma, del primer sorbo a la última charla. Repostería recién horneada y nuestro café de la casa, todos los días.</p>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         3 · SOBRE NOSOTROS
+    ===================================================================== -->
+    <section class="about" id="nosotros">
+      <div class="about__grid">
+        <div class="about__media reveal">
+          <!-- FOTO: barista de Ajualá preparando café / detalle de manos en la barra. -->
+          <img src="assets/img/about-barista.jpg" alt="Barista de Ajualá preparando un café de especialidad" loading="lazy" />
+          <span class="about__stamp" aria-hidden="true">Desde el corazón de Guarne</span>
+        </div>
+        <div class="about__text reveal">
+          <p class="eyebrow">Sobre nosotros</p>
+          <h2 class="section-title">Un rincón cálido<br />donde el tiempo se toma su tiempo.</h2>
+          <p>En <strong>Ajualá</strong> creemos que un buen café es una excusa para algo más grande: una conversación que se alarga, un libro que por fin abres, un encuentro que no tenías agendado. Por eso cuidamos cada detalle, desde el grano que tostamos hasta la luz que te recibe.</p>
+          <p>Somos cafetería de día y bar al caer la tarde, en el corazón de Guarne. Aquí no vienes solo por una bebida: vienes a quedarte un rato más de lo que pensabas. Te esperamos con la mesa lista y la taza caliente.</p>
+          <a href="#menu" class="link-underline">Descubre nuestras especialidades</a>
+        </div>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         4 · MENÚ / ESPECIALIDADES
+    ===================================================================== -->
+    <section class="menu" id="menu">
+      <div class="menu__head reveal">
+        <p class="eyebrow eyebrow--light">Nuestras especialidades</p>
+        <h2 class="section-title section-title--light">Lo que preparamos<br />para que te quedes.</h2>
+        <p class="menu__intro">Una selección de la casa. Los precios están en pesos colombianos (COP).</p>
+      </div>
+
+      <div class="menu__grid">
+        <!-- TARJETA 1 -->
+        <article class="card reveal">
+          <div class="card__media">
+            <!-- FOTO: capuchino de la casa con arte latte. -->
+            <img src="assets/img/menu-capuchino.webp" alt="Capuchino de la casa con arte latte" loading="lazy" />
+          </div>
+          <div class="card__body">
+            <div class="card__top"><h3>Capuchino de la casa</h3><span class="card__price">$8.500</span></div>
+            <p>Espresso aterciopelado y leche texturizada hasta quedar cremosa. Cálido, redondo y con ese final dulce que invita al segundo sorbo.</p>
+          </div>
+        </article>
+
+        <!-- TARJETA 2 -->
+        <article class="card reveal">
+          <div class="card__media">
+            <!-- FOTO: cold brew / bebida fría de maracuyá en vaso. -->
+            <img src="assets/img/menu-cold-brew.jpg" alt="Cold brew frío de maracuyá servido en vaso" loading="lazy" />
+          </div>
+          <div class="card__body">
+            <div class="card__top"><h3>Cold Brew de maracuyá</h3><span class="card__price">$12.000</span></div>
+            <p>Café extraído en frío durante horas, con un toque de maracuyá que despierta. Refrescante, brillante y nuestro favorito para las tardes.</p>
+          </div>
+        </article>
+
+        <!-- TARJETA 3 -->
+        <article class="card reveal">
+          <div class="card__media">
+            <!-- FOTO: croissant / pan de mantequilla recién horneado. -->
+            <img src="assets/img/menu-croissant.jpg" alt="Croissant de mantequilla recién horneado" loading="lazy" />
+          </div>
+          <div class="card__body">
+            <div class="card__top"><h3>Croissant de mantequilla</h3><span class="card__price">$6.500</span></div>
+            <p>Hojaldre crujiente por fuera, tierno por dentro. Horneado cada mañana para acompañar tu café como debe ser.</p>
+          </div>
+        </article>
+
+        <!-- TARJETA 4 -->
+        <article class="card reveal">
+          <div class="card__media">
+            <!-- FOTO: postre estrella (torta de chocolate / postre del día). -->
+            <img src="assets/img/menu-postre.jpg" alt="Postre de chocolate de la casa" loading="lazy" />
+          </div>
+          <div class="card__body">
+            <div class="card__top"><h3>Tentación de chocolate</h3><span class="card__price">$11.000</span></div>
+            <p>Bizcocho húmedo de cacao con ganache intenso. El final feliz que tu visita merece, hecho en casa.</p>
+          </div>
+        </article>
+
+        <!-- TARJETA 5 -->
+        <article class="card reveal">
+          <div class="card__media">
+            <!-- FOTO: cóctel de autor (Ajualá es café-bar). -->
+            <img src="assets/img/menu-coctel.jpg" alt="Cóctel de autor de Ajualá" loading="lazy" />
+          </div>
+          <div class="card__body">
+            <div class="card__top"><h3>Cóctel de autor</h3><span class="card__price">$18.000</span></div>
+            <p>Cuando cae la tarde, el café se vuelve bar. Coctelería de autor con espíritu local para cerrar el día con calma.</p>
+          </div>
+        </article>
+
+        <!-- TARJETA 6 -->
+        <article class="card reveal">
+          <div class="card__media">
+            <!-- FOTO: espresso doble en taza pequeña. -->
+            <img src="assets/img/menu-espresso.jpg" alt="Espresso doble servido en taza pequeña" loading="lazy" />
+          </div>
+          <div class="card__body">
+            <div class="card__top"><h3>Espresso doble</h3><span class="card__price">$6.000</span></div>
+            <p>Intenso, honesto, sin adornos. El alma de la casa concentrada en pocos mililitros de carácter.</p>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         5 · GALERÍA
+    ===================================================================== -->
+    <section class="gallery" id="galeria">
+      <div class="gallery__head reveal">
+        <p class="eyebrow">Galería</p>
+        <h2 class="section-title">Pequeños instantes de Ajualá.</h2>
+      </div>
+      <div class="gallery__grid">
+        <!-- FOTO: granos tostados de café. -->
+        <figure class="gallery__item gallery__item--tall reveal"><img src="assets/img/galeria-1.jpg" alt="Granos de café tostado de Ajualá" loading="lazy" /></figure>
+        <!-- FOTO: mesa con taza de café y ambiente. -->
+        <figure class="gallery__item reveal"><img src="assets/img/galeria-2.jpg" alt="Mesa con café en Ajualá" loading="lazy" /></figure>
+        <!-- FOTO: arte latte visto desde arriba. -->
+        <figure class="gallery__item reveal"><img src="assets/img/galeria-3.jpg" alt="Arte latte en una taza de Ajualá" loading="lazy" /></figure>
+        <!-- FOTO: vitrina de repostería. -->
+        <figure class="gallery__item gallery__item--wide reveal"><img src="assets/img/galeria-4.jpg" alt="Vitrina de repostería de Ajualá" loading="lazy" /></figure>
+        <!-- FOTO: barra / mostrador del café. -->
+        <figure class="gallery__item reveal"><img src="assets/img/galeria-5.jpg" alt="Barra del Ajualá Café Bar" loading="lazy" /></figure>
+        <!-- FOTO: manos sosteniendo una taza. -->
+        <figure class="gallery__item reveal"><img src="assets/img/galeria-6.jpg" alt="Manos sosteniendo una taza de café en Ajualá" loading="lazy" /></figure>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         6 · RESEÑAS
+    ===================================================================== -->
+    <section class="reviews">
+      <div class="reviews__head reveal">
+        <p class="eyebrow eyebrow--light">Lo que dicen</p>
+        <h2 class="section-title section-title--light">Historias que empiezan<br />con un café.</h2>
+      </div>
+      <div class="reviews__grid">
+        <figure class="quote reveal">
+          <div class="quote__seal" aria-hidden="true">”</div>
+          <blockquote>Llegué por un café y me quedé toda la tarde. El lugar te abraza, y esa bebida de maracuyá ya es mi excusa para volver cada semana.</blockquote>
+          <figcaption>— Valentina R., Guarne</figcaption>
+        </figure>
+        <figure class="quote reveal">
+          <div class="quote__seal" aria-hidden="true">”</div>
+          <blockquote>De día café, de noche un trago tranquilo. No conozco otro sitio en el pueblo con esta calidez. Atención impecable y todo hecho con cariño.</blockquote>
+          <figcaption>— Andrés M., Medellín</figcaption>
+        </figure>
+        <figure class="quote reveal">
+          <div class="quote__seal" aria-hidden="true">”</div>
+          <blockquote>El croissant recién horneado con un capuchino: mi ritual de los sábados. Ajualá se volvió parte de mi rutina favorita.</blockquote>
+          <figcaption>— Daniela O., Rionegro</figcaption>
+        </figure>
+      </div>
+    </section>
+
+    <!-- ====================================================================
+         7 · UBICACIÓN Y HORARIO
+    ===================================================================== -->
+    <section class="location" id="ubicacion">
+      <div class="location__info reveal">
+        <p class="eyebrow">Ven a visitarnos</p>
+        <h2 class="section-title">Te esperamos<br />en Guarne.</h2>
+
+        <ul class="location__list">
+          <li>
+            <span class="location__label">Dirección</span>
+            <!-- REEMPLAZAR: dirección real del local -->
+            <span class="location__value">Calle 00 # 00-00, Centro<br />Guarne, Antioquia, Colombia</span>
+          </li>
+          <li>
+            <span class="location__label">Horario</span>
+            <span class="location__value">
+              Lunes a jueves · 8:00 a.m. – 8:00 p.m.<br />
+              Viernes y sábado · 8:00 a.m. – 11:00 p.m.<br />
+              Domingo · 9:00 a.m. – 6:00 p.m.
+            </span>
+          </li>
+          <li>
+            <span class="location__label">Contacto</span>
+            <span class="location__value">
+              <!-- REEMPLAZAR: número real de WhatsApp -->
+              <a href="https://wa.me/573000000000" target="_blank" rel="noopener" class="link-underline">WhatsApp +57 300 000 0000</a><br />
+              <a href="https://instagram.com/ajualacafebar" target="_blank" rel="noopener" class="link-underline">@ajualacafebar</a>
+            </span>
+          </li>
+        </ul>
+
+        <a href="https://wa.me/573000000000?text=Hola%20Ajualá,%20quiero%20reservar%20una%20mesa"
+           class="btn btn--accent" target="_blank" rel="noopener">Reserva por WhatsApp</a>
+      </div>
+
+      <div class="location__map reveal">
+        <!-- MAPA: reemplaza el src del iframe por el embed real de Google Maps de la dirección de Ajualá.
+             En Google Maps: Compartir → Insertar un mapa → copia el atributo src. -->
+        <iframe
+          title="Ubicación de Ajualá Café Bar en Guarne, Antioquia"
+          src="https://www.google.com/maps?q=Guarne,+Antioquia,+Colombia&output=embed"
+          width="100%" height="100%" style="border:0;" allowfullscreen=""
+          loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
+      </div>
+    </section>
+
+  </main>
+
+  <!-- ====================================================================
+       9 · PIE DE PÁGINA
+  ===================================================================== -->
+  <footer class="footer">
+    <div class="footer__top">
+      <div class="footer__brand">
+        <img src="assets/img/logo-badge.png" alt="Logo de Ajualá Café Bar" width="64" height="64" />
+        <p class="footer__tagline">No solo café.<br /><em>Una experiencia única e inolvidable.</em></p>
+      </div>
+      <nav class="footer__nav" aria-label="Enlaces del pie de página">
+        <a href="#inicio">Inicio</a>
+        <a href="#menu">Menú</a>
+        <a href="#nosotros">Nosotros</a>
+        <a href="#galeria">Galería</a>
+        <a href="#ubicacion">Ubicación</a>
+      </nav>
+      <div class="footer__social">
+        <span class="footer__social-label">Síguenos</span>
+        <a href="https://instagram.com/ajualacafebar" target="_blank" rel="noopener">Instagram @ajualacafebar</a>
+        <!-- REEMPLAZAR: número real de WhatsApp -->
+        <a href="https://wa.me/573000000000" target="_blank" rel="noopener">WhatsApp</a>
+      </div>
+    </div>
+    <div class="footer__bottom">
+      <span>© <span id="year">2026</span> Ajualá Café Bar · Guarne, Antioquia. Todos los derechos reservados.</span>
+    </div>
+  </footer>
+
+  <!-- ====================================================================
+       8 · BOTÓN FLOTANTE DE WHATSAPP (visible en toda la página)
+  ===================================================================== -->
+  <!-- REEMPLAZAR: número real de WhatsApp con código de país, ej. 573001234567 -->
+  <a href="https://wa.me/573000000000?text=Hola%20Ajualá,%20quiero%20más%20información"
+     class="wa-float" target="_blank" rel="noopener" aria-label="Escríbenos por WhatsApp">
+    <svg viewBox="0 0 24 24" width="28" height="28" aria-hidden="true">
+      <path fill="currentColor" d="M.057 24l1.687-6.163a11.867 11.867 0 01-1.587-5.946C.16 5.335 5.495 0 12.05 0a11.82 11.82 0 018.413 3.488 11.82 11.82 0 013.48 8.414c-.003 6.557-5.338 11.892-11.893 11.892a11.9 11.9 0 01-5.688-1.448L.057 24zm6.597-3.807c1.676.995 3.276 1.591 5.392 1.592 5.448 0 9.886-4.434 9.889-9.885.002-5.462-4.415-9.89-9.881-9.892-5.452 0-9.887 4.434-9.889 9.884a9.86 9.86 0 001.51 5.26l-.999 3.648 3.978-1.197zm11.387-5.464c-.074-.124-.272-.198-.57-.347-.297-.149-1.758-.868-2.031-.967-.272-.099-.47-.149-.669.149-.198.297-.768.967-.941 1.165-.173.198-.347.223-.644.074-.297-.149-1.255-.462-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.297-.347.446-.521.149-.174.198-.298.298-.497.099-.198.05-.372-.025-.521-.074-.149-.669-1.612-.916-2.207-.242-.579-.487-.501-.669-.51l-.57-.01c-.198 0-.52.074-.792.372s-1.04 1.016-1.04 2.479 1.065 2.876 1.213 3.074c.149.198 2.096 3.2 5.077 4.487.709.306 1.263.489 1.694.626.712.226 1.36.194 1.872.118.571-.085 1.758-.719 2.006-1.413.248-.695.248-1.29.173-1.414z"/>
+    </svg>
+  </a>
+
+  <script src="main.js?v=20260619" defer></script>
+</body>
+</html>
